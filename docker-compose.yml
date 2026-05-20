@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: cloudbox_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: cloudbox
+      POSTGRES_PASSWORD: cloudbox
+      POSTGRES_DB: cloudbox
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: cloudbox_redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
+  
